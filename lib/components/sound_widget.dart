@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class SoundWidget extends StatelessWidget {
   const SoundWidget(
@@ -18,20 +17,23 @@ class SoundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          GestureDetector(
-            onTap: onPress,
-            child: icon,
-          ),
-          Slider(
-            value: volumeValue,
-            max: 1.0,
-            onChanged: volumeOnChanged,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            GestureDetector(
+              onTap: onPress,
+              child: icon,
+            ),
+            Slider(
+              value: volumeValue,
+              max: 1.0,
+              onChanged: volumeOnChanged,
+            ),
+          ],
+        ),
       ),
     );
   }

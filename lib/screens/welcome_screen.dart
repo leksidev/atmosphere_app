@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
-import 'package:weather_icons/weather_icons.dart';
 import 'package:atmosphere/components/sound_widget.dart';
+import 'package:atmosphere/constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -13,27 +12,17 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final player = AudioPlayer();
-  double currentElementVolume = 0.5;
-  bool playIndicator = false;
-
-  void playSound(String sound, bool playSound) async {
-    await player.setSource(
-      AssetSource(sound),
-    );
-    if (playSound) {
-      await player.resume();
-    } else {
-      await player.stop();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Atmosphere'),
-        scrolledUnderElevation: 3.0,
+        titleTextStyle: const TextStyle(
+          fontFamily: 'JosefinSans',
+          color: Colors.blueGrey,
+          fontSize: 60.0,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -43,19 +32,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               onPress: () {
                 setState(
                   () {
-                    playIndicator = !playIndicator;
-                    playSound(
-                        'audio/data_resources_sounds_storm.ogg', playIndicator);
+                    catalogSounds['Storm']?.isSoundPlayNow =
+                        !catalogSounds['Storm']!.isSoundPlayNow;
+                    catalogSounds['Storm']?.playSound();
                   },
                 );
               },
-              icon: Icon(WeatherIcons.storm_showers,
-                  size: 80.0, color: playIndicator ? Colors.red : Colors.grey),
-              volumeValue: currentElementVolume,
+              icon: Icon(catalogSounds['Storm']?.icon,
+                  size: 60.0,
+                  color: catalogSounds['Storm']!.isSoundPlayNow
+                      ? Colors.red
+                      : Colors.grey),
+              volumeValue: catalogSounds['Storm']!.currentSoundVolume,
               volumeOnChanged: (double value) {
                 setState(() {
-                  currentElementVolume = value;
-                  player.setVolume(currentElementVolume);
+                  catalogSounds['Storm']!.currentSoundVolume = value;
+                  catalogSounds['Storm']!.setVolume();
                 });
               },
             ),
@@ -63,19 +55,91 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               onPress: () {
                 setState(
                   () {
-                    playIndicator = !playIndicator;
-                    playSound(
-                        'audio/data_resources_sounds_birds.ogg', playIndicator);
+                    catalogSounds['Birds']?.isSoundPlayNow =
+                        !catalogSounds['Birds']!.isSoundPlayNow;
+                    catalogSounds['Birds']?.playSound();
                   },
                 );
               },
-              icon: Icon(WeatherIcons.day_sunny,
-                  size: 80.0, color: playIndicator ? Colors.red : Colors.grey),
-              volumeValue: currentElementVolume,
+              icon: Icon(catalogSounds['Birds']?.icon,
+                  size: 60.0,
+                  color: catalogSounds['Birds']!.isSoundPlayNow
+                      ? Colors.red
+                      : Colors.grey),
+              volumeValue: catalogSounds['Birds']!.currentSoundVolume,
               volumeOnChanged: (double value) {
                 setState(() {
-                  currentElementVolume = value;
-                  player.setVolume(currentElementVolume);
+                  catalogSounds['Birds']!.currentSoundVolume = value;
+                  catalogSounds['Birds']!.setVolume();
+                });
+              },
+            ),
+            SoundWidget(
+              onPress: () {
+                setState(
+                  () {
+                    catalogSounds['City']?.isSoundPlayNow =
+                        !catalogSounds['City']!.isSoundPlayNow;
+                    catalogSounds['City']?.playSound();
+                  },
+                );
+              },
+              icon: Icon(catalogSounds['City']?.icon,
+                  size: 60.0,
+                  color: catalogSounds['City']!.isSoundPlayNow
+                      ? Colors.red
+                      : Colors.grey),
+              volumeValue: catalogSounds['City']!.currentSoundVolume,
+              volumeOnChanged: (double value) {
+                setState(() {
+                  catalogSounds['City']!.currentSoundVolume = value;
+                  catalogSounds['City']!.setVolume();
+                });
+              },
+            ),
+            SoundWidget(
+              onPress: () {
+                setState(
+                  () {
+                    catalogSounds['Coffee-shop']?.isSoundPlayNow =
+                        !catalogSounds['Coffee-shop']!.isSoundPlayNow;
+                    catalogSounds['Coffee-shop']?.playSound();
+                  },
+                );
+              },
+              icon: Icon(catalogSounds['Coffee-shop']?.icon,
+                  size: 60.0,
+                  color: catalogSounds['Coffee-shop']!.isSoundPlayNow
+                      ? Colors.red
+                      : Colors.grey),
+              volumeValue: catalogSounds['Coffee-shop']!.currentSoundVolume,
+              volumeOnChanged: (double value) {
+                setState(() {
+                  catalogSounds['Coffee-shop']!.currentSoundVolume = value;
+                  catalogSounds['Coffee-shop']!.setVolume();
+                });
+              },
+            ),
+            SoundWidget(
+              onPress: () {
+                setState(
+                  () {
+                    catalogSounds['Fireplace']?.isSoundPlayNow =
+                        !catalogSounds['Fireplace']!.isSoundPlayNow;
+                    catalogSounds['Fireplace']?.playSound();
+                  },
+                );
+              },
+              icon: Icon(catalogSounds['Fireplace']?.icon,
+                  size: 60.0,
+                  color: catalogSounds['Fireplace']!.isSoundPlayNow
+                      ? Colors.red
+                      : Colors.grey),
+              volumeValue: catalogSounds['Fireplace']!.currentSoundVolume,
+              volumeOnChanged: (double value) {
+                setState(() {
+                  catalogSounds['Fireplace']!.currentSoundVolume = value;
+                  catalogSounds['Fireplace']!.setVolume();
                 });
               },
             ),
