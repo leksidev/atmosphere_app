@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:atmosphere/screens/wellcome_screen.dart';
+import 'package:atmosphere/screens/welcome_screen.dart';
 
 void main() {
   runApp(const AtmosphereApp());
@@ -13,7 +13,11 @@ class AtmosphereApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           useMaterial3: true, colorSchemeSeed: Colors.lightBlue.shade100),
-      home: const WellcomeScreen(),
+      home: const WelcomeScreen(),
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => const WelcomeScreen(),
+      },
     );
   }
 }
