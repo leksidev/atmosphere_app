@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class Sound {
-  Sound({required this.link, required this.icon});
+  Sound(
+      {required this.link,
+      required this.icon,
+      this.currentSoundVolume = 0.5,
+      this.isSoundPlayNow = false});
 
   String link;
   IconData icon;
-  double currentSoundVolume = 0.5;
-  bool isSoundPlayNow = false;
+  double currentSoundVolume;
+  bool isSoundPlayNow;
 
   final player = AudioPlayer();
 
-  void playSound(link, isSoundPlayNov) async {
+  void playSound() async {
     await player.setSource(
       AssetSource(link),
     );
@@ -20,5 +24,9 @@ class Sound {
     } else {
       await player.stop();
     }
+  }
+
+  void setVolume() {
+    player.setVolume(currentSoundVolume);
   }
 }
