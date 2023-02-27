@@ -12,7 +12,7 @@ class AtmosphereApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          useMaterial3: true, colorSchemeSeed: Colors.lightBlue.shade100),
+          useMaterial3: true, colorSchemeSeed: Colors.blueGrey.shade400),
       home: const WelcomeScreen(),
       initialRoute: WelcomeScreen.id,
       routes: {
