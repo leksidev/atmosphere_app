@@ -10,7 +10,7 @@ class SoundWidget extends StatelessWidget {
       : super(key: key);
 
   final VoidCallback onPress;
-  final Icon icon;
+  final Widget icon;
   final double volumeValue;
   final Function(double) volumeOnChanged;
 

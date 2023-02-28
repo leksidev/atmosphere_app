@@ -2,10 +2,13 @@ import 'package:atmosphere/components/sound.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-Map<String, Sound> catalogSounds = {
+const kIconSize = 60.0;
+
+Map<String, Sound> catalogueSounds = {
   'Storm': Sound(
-      link: 'audio/data_resources_sounds_storm.ogg',
-      icon: WeatherIcons.storm_showers),
+    link: 'audio/data_resources_sounds_storm.ogg',
+    icon: WeatherIcons.storm_showers,
+  ),
   'Birds': Sound(
       link: 'audio/data_resources_sounds_birds.ogg', icon: Icons.music_note),
   'City': Sound(

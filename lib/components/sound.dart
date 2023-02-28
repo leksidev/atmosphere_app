@@ -1,3 +1,4 @@
+import 'package:atmosphere/soundDataCatalogue.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -15,11 +16,12 @@ class Sound {
 
   final player = AudioPlayer();
 
-  void playSound() async {
-    await player.setSource(
-      AssetSource(link),
-    );
+  void playbackControl() async {
+    isSoundPlayNow = !isSoundPlayNow;
     if (isSoundPlayNow) {
+      await player.setSource(
+        AssetSource(link),
+      );
       await player.resume();
     } else {
       await player.stop();
