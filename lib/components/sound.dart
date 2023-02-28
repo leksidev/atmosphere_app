@@ -1,4 +1,3 @@
-import 'package:atmosphere/soundDataCatalogue.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -22,6 +21,7 @@ class Sound {
       await player.setSource(
         AssetSource(link),
       );
+      await player.setReleaseMode(ReleaseMode.loop);
       await player.resume();
     } else {
       await player.stop();
