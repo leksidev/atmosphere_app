@@ -1,9 +1,11 @@
+import 'dart:collection';
+
 import 'package:atmosphere/models/sound.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class SoundModel extends ChangeNotifier {
-  final Map<String, Sound> _catalogueSounds = {
+  final Map<String, Sound> _soundsList = {
     'Storm': Sound(
       link: 'audio/data_resources_sounds_storm.ogg',
       icon: WeatherIcons.storm_showers,
@@ -25,22 +27,25 @@ class SoundModel extends ChangeNotifier {
         Sound(link: 'audio/data_resources_sounds_train.ogg', icon: Icons.train),
   };
 
+  UnmodifiableListView<Sound> get soundsList =>
+      UnmodifiableListView(_soundsList as Iterable<Sound>);
+
   // SoundModel(this._catalogueSounds);
 
   void togglePlaybackControl(String soundName) {
-    _catalogueSounds[soundName]?.playbackControl();
+    _soundsList[soundName]?.playbackControl();
     notifyListeners();
   }
 
   void setVolume(String soundName, double value) {
-    _catalogueSounds[soundName]!.currentSoundVolume = value;
-    _catalogueSounds[soundName]!.setVolume();
+    _soundsList[soundName]!.currentSoundVolume = value;
+    _soundsList[soundName]!.setVolume();
     notifyListeners();
   }
 
   bool isSoundPlayNow(String soundName) =>
-      _catalogueSounds[soundName]!.isSoundPlayNow;
+      _soundsList[soundName]!.isSoundPlayNow;
 
   double currentSoundVolume(String soundName) =>
-      _catalogueSounds[soundName]!.currentSoundVolume;
+      _soundsList[soundName]!.currentSoundVolume;
 }

@@ -24,10 +24,10 @@ class AtmosphereApp extends StatelessWidget {
             visualDensity: VisualDensity.adaptivePlatformDensity,
             useMaterial3: true,
             colorSchemeSeed: Colors.blueGrey.shade400),
-        home: const WelcomeScreen(),
-        initialRoute: WelcomeScreen.id,
+        home: const SoundsScreen(),
+        initialRoute: SoundsScreen.id,
         routes: {
-          WelcomeScreen.id: (context) => const WelcomeScreen(),
+          SoundsScreen.id: (context) => const SoundsScreen(),
         },
       ),
     );
