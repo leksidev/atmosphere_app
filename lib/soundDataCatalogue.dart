@@ -10,7 +10,7 @@ Map<String, Sound> catalogueSounds = {
     icon: WeatherIcons.storm_showers,
   ),
   'Birds': Sound(
-      link: 'audio/data_resources_sounds_birds.ogg', icon: Icons.music_note),
+      link: 'audio/data_resources_sounds_birds.ogg', icon: Icons.queue_music),
   'City': Sound(
       link: 'audio/data_resources_sounds_city.ogg', icon: Icons.location_city),
   'Coffee-shop': Sound(
@@ -19,7 +19,13 @@ Map<String, Sound> catalogueSounds = {
   'Fireplace': Sound(
       link: 'audio/data_resources_sounds_fireplace.ogg', icon: Icons.fireplace),
   'Wind': Sound(
-      link: 'audio/data_resources_sounds_wind.ogg', icon: Icons.wind_power),
+      link: 'audio/data_resources_sounds_wind.ogg',
+      icon: WeatherIcons.strong_wind),
   'Train':
       Sound(link: 'audio/data_resources_sounds_train.ogg', icon: Icons.train),
+  'Summer night': Sound(
+      link: 'audio/data_resources_sounds_summer-night.ogg',
+      icon: WeatherIcons.night_alt_lightning),
+  'Waves':
+      Sound(link: 'audio/data_resources_sounds_waves.ogg', icon: Icons.waves),
 };

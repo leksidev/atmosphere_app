@@ -20,7 +20,7 @@ class SoundsScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.blueGrey.shade400,
           centerTitle: true,
-          title: const Text('Atmosphere'),
+          title: const Text('Атмосфера'),
           titleTextStyle:
               const TextStyle(fontSize: 40.0, color: Colors.black54),
         ),

@@ -22,9 +22,15 @@ class SoundModel extends ChangeNotifier {
         link: 'audio/data_resources_sounds_fireplace.ogg',
         icon: Icons.fireplace),
     'Wind': Sound(
-        link: 'audio/data_resources_sounds_wind.ogg', icon: Icons.wind_power),
+        link: 'audio/data_resources_sounds_wind.ogg',
+        icon: WeatherIcons.wind_direction),
     'Train':
         Sound(link: 'audio/data_resources_sounds_train.ogg', icon: Icons.train),
+    'Summer night': Sound(
+        link: 'audio/data_resources_sounds_summer-night.ogg',
+        icon: WeatherIcons.night_alt_lightning),
+    'Waves':
+        Sound(link: 'audio/data_resources_sounds_waves.ogg', icon: Icons.waves),
   };
 
   UnmodifiableListView<Sound> get soundsList =>
