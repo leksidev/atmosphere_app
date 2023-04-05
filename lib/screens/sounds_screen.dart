@@ -25,7 +25,8 @@ class SoundsScreen extends StatelessWidget {
         ),
         body: SafeArea(
           minimum: const EdgeInsets.all(12.0),
-          child: ListView(
+          child: GridView.count(
+            crossAxisCount: 2,
             children: soundModel.soundsList.keys.map((soundName) {
               return Consumer<SoundModel>(
                 builder: (context, soundModel, child) => SoundWidget(

@@ -21,19 +21,28 @@ class SoundWidget extends StatelessWidget {
     return SizedBox(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             GestureDetector(
               onTap: onPress,
               // child: icon,
               child: image,
             ),
-            Slider(
-              value: volumeValue,
-              max: 1.0,
-              onChanged: volumeOnChanged,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(Icons.volume_mute),
+                Expanded(
+                  child: Slider(
+                    value: volumeValue,
+                    max: 1.0,
+                    onChanged: volumeOnChanged,
+                  ),
+                ),
+                const Icon(Icons.volume_up),
+              ],
             ),
           ],
         ),
