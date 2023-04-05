@@ -1,4 +1,3 @@
-import 'package:atmosphere/sound_data_catalogue.dart';
 import 'package:flutter/material.dart';
 import 'package:atmosphere/widgets/sound_widget.dart';
 import 'package:provider/provider.dart';
@@ -27,20 +26,38 @@ class SoundsScreen extends StatelessWidget {
         body: SafeArea(
           minimum: const EdgeInsets.all(12.0),
           child: ListView(
-            children: catalogueSounds.keys.map((soundName) {
+            children: soundModel.soundsList.keys.map((soundName) {
               return Consumer<SoundModel>(
                 builder: (context, soundModel, child) => SoundWidget(
                   onPress: () {
                     soundModel.togglePlaybackControl(soundName);
                   },
                   icon: Icon(
-                    catalogueSounds[soundName]?.icon,
+                    soundModel.soundsList[soundName]?.icon,
                     size: 60.0,
                     color: soundModel.isSoundPlayNow(soundName)
                         ? Colors.blueAccent
                         : Colors.grey,
                   ),
-                  image: catalogueSounds[soundName]!.image,
+                  // image: soundModel.soundsList[soundName]!.image,
+                  image: soundModel.isSoundPlayNow(soundName)
+                      ? Stack(
+                          children: [
+                            soundModel.soundsList[soundName]!.image,
+                            Image.asset('assets/img/icons8-pause.png',
+                                color: const Color.fromRGBO(255, 255, 255, 0.5),
+                                colorBlendMode: BlendMode.modulate)
+                          ],
+                        )
+                      : Stack(
+                          fit: StackFit.loose,
+                          children: [
+                            soundModel.soundsList[soundName]!.image,
+                            Image.asset('assets/img/icons8-play1.png',
+                                color: const Color.fromRGBO(255, 255, 255, 0.5),
+                                colorBlendMode: BlendMode.modulate)
+                          ],
+                        ),
                   volumeValue: soundModel.currentSoundVolume(soundName),
                   volumeOnChanged: (double value) {
                     soundModel.setVolume(soundName, value);
