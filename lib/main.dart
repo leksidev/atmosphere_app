@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:atmosphere/screens/sounds_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'models/sound_model.dart';
@@ -20,10 +19,11 @@ class AtmosphereApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.montserratSubrayadaTextTheme(),
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            useMaterial3: true,
-            colorSchemeSeed: Colors.blueGrey.shade400),
+          // textTheme: GoogleFonts.montserratSubrayadaTextTheme(),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          useMaterial3: true,
+          // colorSchemeSeed: Colors.blueGrey.shade400
+        ),
         home: const SoundsScreen(),
         initialRoute: SoundsScreen.id,
         routes: {

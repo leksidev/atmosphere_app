@@ -17,11 +17,11 @@ class SoundsScreen extends StatelessWidget {
       child: Scaffold(
         extendBody: true,
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey.shade400,
+          // backgroundColor: Colors.blueGrey.shade400,
           centerTitle: true,
           title: const Text('Атмосфера'),
           titleTextStyle: const TextStyle(
-              fontFamily: 'MarckScript', fontSize: 50.0, color: Colors.white),
+              fontFamily: 'MarckScript', fontSize: 50.0, color: Colors.black),
         ),
         body: SafeArea(
           minimum: const EdgeInsets.all(12.0),
