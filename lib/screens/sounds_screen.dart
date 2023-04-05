@@ -20,8 +20,8 @@ class SoundsScreen extends StatelessWidget {
           backgroundColor: Colors.blueGrey.shade400,
           centerTitle: true,
           title: const Text('Атмосфера'),
-          titleTextStyle:
-              const TextStyle(fontSize: 40.0, color: Colors.black54),
+          titleTextStyle: const TextStyle(
+              fontFamily: 'MarckScript', fontSize: 50.0, color: Colors.white),
         ),
         body: SafeArea(
           minimum: const EdgeInsets.all(12.0),
@@ -39,7 +39,6 @@ class SoundsScreen extends StatelessWidget {
                         ? Colors.blueAccent
                         : Colors.grey,
                   ),
-                  // image: soundModel.soundsList[soundName]!.image,
                   image: soundModel.isSoundPlayNow(soundName)
                       ? Stack(
                           children: [
