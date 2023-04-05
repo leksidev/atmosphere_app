@@ -1,4 +1,4 @@
-import 'package:atmosphere/soundDataCatalogue.dart';
+import 'package:atmosphere/sound_data_catalogue.dart';
 import 'package:flutter/material.dart';
 import 'package:atmosphere/widgets/sound_widget.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +40,7 @@ class SoundsScreen extends StatelessWidget {
                         ? Colors.blueAccent
                         : Colors.grey,
                   ),
+                  image: catalogueSounds[soundName]!.image,
                   volumeValue: soundModel.currentSoundVolume(soundName),
                   volumeOnChanged: (double value) {
                     soundModel.setVolume(soundName, value);

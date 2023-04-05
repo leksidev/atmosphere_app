@@ -5,11 +5,13 @@ class Sound {
   Sound(
       {required this.link,
       required this.icon,
+      required this.image,
       this.currentSoundVolume = 0.5,
       this.isSoundPlayNow = false});
 
   String link;
   IconData icon;
+  Image image;
   double currentSoundVolume;
   bool isSoundPlayNow;
 

@@ -5,12 +5,14 @@ class SoundWidget extends StatelessWidget {
       {Key? key,
       required this.onPress,
       required this.icon,
+      required this.image,
       required this.volumeValue,
       required this.volumeOnChanged})
       : super(key: key);
 
   final VoidCallback onPress;
   final Widget icon;
+  final Widget image;
   final double volumeValue;
   final Function(double) volumeOnChanged;
 
@@ -25,7 +27,8 @@ class SoundWidget extends StatelessWidget {
           children: <Widget>[
             GestureDetector(
               onTap: onPress,
-              child: icon,
+              // child: icon,
+              child: image,
             ),
             Slider(
               value: volumeValue,
