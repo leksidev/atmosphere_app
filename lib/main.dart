@@ -19,10 +19,8 @@ class AtmosphereApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData(
-          // textTheme: GoogleFonts.montserratSubrayadaTextTheme(),
           visualDensity: VisualDensity.adaptivePlatformDensity,
           useMaterial3: true,
-          // colorSchemeSeed: Colors.blueGrey.shade400
         ),
         home: const SoundsScreen(),
         initialRoute: SoundsScreen.id,
