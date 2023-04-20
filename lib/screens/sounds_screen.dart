@@ -40,24 +40,21 @@ class SoundsScreen extends StatelessWidget {
                         ? Colors.blueAccent
                         : Colors.grey,
                   ),
-                  image: soundModel.isSoundPlayNow(soundName)
-                      ? Stack(
-                          children: [
-                            soundModel.soundsList[soundName]!.image,
-                            Image.asset('assets/img/icons8-pause.png',
-                                color: const Color.fromRGBO(255, 255, 255, 0.5),
-                                colorBlendMode: BlendMode.modulate)
-                          ],
-                        )
-                      : Stack(
-                          fit: StackFit.loose,
-                          children: [
-                            soundModel.soundsList[soundName]!.image,
-                            Image.asset('assets/img/icons8-play1.png',
-                                color: const Color.fromRGBO(255, 255, 255, 0.5),
-                                colorBlendMode: BlendMode.modulate)
-                          ],
-                        ),
+                  image: AnimatedCrossFade(
+                    firstChild: Stack(
+                      children: [
+                        soundModel.soundsList[soundName]!.image,
+                        Image.asset('assets/img/icons8-pause.png',
+                            color: const Color.fromRGBO(255, 255, 255, 0.5),
+                            colorBlendMode: BlendMode.modulate)
+                      ],
+                    ),
+                    secondChild: soundModel.soundsList[soundName]!.image,
+                    crossFadeState: soundModel.isSoundPlayNow(soundName)
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
+                    duration: const Duration(microseconds: 2000),
+                  ),
                   volumeValue: soundModel.currentSoundVolume(soundName),
                   volumeOnChanged: (double value) {
                     soundModel.setVolume(soundName, value);
