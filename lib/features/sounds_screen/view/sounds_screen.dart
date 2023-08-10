@@ -36,7 +36,7 @@ class SoundsList extends StatelessWidget {
             },
             icon: Icon(
               soundModel.soundsList[soundName]?.icon,
-              size: 60.0,
+              size: 20.0,
               color: soundModel.isSoundPlayNow(soundName)
                   ? Colors.blueAccent
                   : Colors.grey,
@@ -46,6 +46,7 @@ class SoundsList extends StatelessWidget {
                 children: [
                   soundModel.soundsList[soundName]!.image,
                   Image.asset('assets/img/icons8-pause.png',
+                      height: 60.0,
                       color: const Color.fromRGBO(255, 255, 255, 0.5),
                       colorBlendMode: BlendMode.modulate)
                 ],

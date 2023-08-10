@@ -1,4 +1,3 @@
-import 'package:atmosphere/widgets/scaffold_with_navbar.dart';
 import 'package:flutter/material.dart';
 
 class PressetsScreen extends StatelessWidget {
