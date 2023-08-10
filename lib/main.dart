@@ -1,7 +1,6 @@
+import 'package:atmosphere/config/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:atmosphere/screens/sounds_screen.dart';
 import 'package:provider/provider.dart';
-
 import 'models/sound_model.dart';
 
 void main() {
@@ -17,16 +16,12 @@ class AtmosphereApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SoundModel()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
           useMaterial3: true,
         ),
-        home: const SoundsScreen(),
-        initialRoute: SoundsScreen.id,
-        routes: {
-          SoundsScreen.id: (context) => const SoundsScreen(),
-        },
+        routerConfig: router,
       ),
     );
   }

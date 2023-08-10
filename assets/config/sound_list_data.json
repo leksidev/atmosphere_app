@@ -1,0 +1,36 @@
+{
+    "Storm": [
+        {
+            "link": "audio/data_resources_sounds_storm.ogg"
+        },
+        {
+            "icon": "WeatherIcons.storm_showers"
+        },
+        {
+            "image": "assets/img/icons8-thunderstorm.png"
+        }
+    ],
+    "Birds": [
+        {
+            "link": "audio/data_resources_sounds_birds.ogg"
+        },
+        {
+            "icon": "Icons.music_note"
+        },
+        {
+            "image": "assets/img/icons8-birds.png"
+        }
+    ],
+    "City": [
+        {
+            "link": "audio/data_resources_sounds_city.ogg"
+        },
+        {
+            "icon": "Icons.location_city"
+        },
+        {
+            "image": "assets/img/icons8-city.png"
+        }
+    ]
+ 
+}

@@ -76,3 +76,36 @@ class SoundModel extends ChangeNotifier {
   double currentSoundVolume(String soundName) =>
       _soundsList[soundName]!.currentSoundVolume;
 }
+
+
+
+  //  "Coffee-shop": [
+  //       "link": "audio/data_resources_sounds_coffee-shop.ogg",
+  //       "icon": "Icons.coffee_maker",
+  //       "image": "assets/img/icons8-coffee-shop.png"
+  //   ],
+  //   "Fireplace": [
+  //       "link": "audio/data_resources_sounds_fireplace.ogg",
+  //       "icon": "Icons.fireplace",
+  //       "image": "assets/img/icons8-fire.png"
+  //   ],
+  //   "Wind": [
+  //       "link": "audio/data_resources_sounds_wind.ogg",
+  //       "icon": "WeatherIcons.wind_direction",
+  //       "image": "assets/img/icons8-wind.png"
+  //   ],
+  //   "Train": [
+  //       {"link": "audio/data_resources_sounds_train.ogg"},
+  //       {"icon": "Icons.train"},
+  //       {"image": "assets/img/icons8-train.png"}
+  //   ],
+  //   "Summer night": [
+  //       {"link": "audio/data_resources_sounds_summer-night.ogg"}
+  //       "icon": "WeatherIcons.night_alt_lightning",
+  //       "image": "assets/img/icons8-half-moon.png"
+  //   ],
+  //   "Waves": [
+  //       "link": "audio/data_resources_sounds_waves.ogg",
+  //       "icon": "Icons.waves",
+  //       "image": "assets/img/icons8-waves.png"
+  //   ],
