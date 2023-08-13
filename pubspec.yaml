@@ -25,12 +25,20 @@ dependencies:
   line_icons: ^2.0.2
   go_router: ^10.0.0
   just_audio: ^0.9.34
+  talker_flutter: ^3.2.0
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  get_it: ^7.6.0
+  flutter_rustore_review: ^0.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
+  freezed: ^2.4.2
+  json_serializable: ^6.7.1
 
 
 flutter:
