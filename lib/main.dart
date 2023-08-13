@@ -1,9 +1,15 @@
 import 'package:atmosphere/config/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'models/sound_model.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+
+import 'models/playlist.dart';
 
 void main() {
+  final talker = TalkerFlutter.init();
+  GetIt.I.registerSingleton(talker);
+
   runApp(const AtmosphereApp());
 }
 
@@ -14,7 +20,9 @@ class AtmosphereApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SoundModel()),
+        ChangeNotifierProvider<Playlist>(
+          create: (_) => Playlist(),
+        ),
       ],
       child: MaterialApp.router(
         theme: ThemeData(
