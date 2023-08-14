@@ -28,11 +28,27 @@ final router = GoRouter(
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const SoundsScreen(),
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const SoundsScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
+            ),
+            // builder: (context, state) {
+            //   return const SoundsScreen();
+            // },
           ),
           GoRoute(
             path: '/pressets',
-            builder: (context, state) => const PressetsScreen(),
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const PressetsScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child),
+            ),
+            // builder: (context, state) => const PressetsScreen(),
           ),
         ]),
   ],
