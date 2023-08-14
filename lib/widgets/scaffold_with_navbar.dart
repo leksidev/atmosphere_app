@@ -12,6 +12,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: NavigationBar(
+        animationDuration: Duration(microseconds: 500),
         destinations: const [
           NavigationDestination(icon: Icon(LineIcons.music), label: 'Sounds'),
           NavigationDestination(

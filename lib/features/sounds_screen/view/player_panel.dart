@@ -1,6 +1,5 @@
 import 'package:atmosphere/models/playlist.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rustore_review/flutter_rustore_review.dart';
 import 'package:provider/provider.dart';
 
 class PlayerPanel extends StatelessWidget {
@@ -9,7 +8,7 @@ class PlayerPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4,
+      height: MediaQuery.of(context).size.height / 5,
       child: ListView.builder(
         itemCount: Provider.of<Playlist>(context).playedSounds.length,
         itemBuilder: (BuildContext context, int index) {
@@ -36,6 +35,7 @@ class PlayerPanel extends StatelessWidget {
             ),
             trailing: Image.asset(
                 fit: BoxFit.scaleDown,
+                width: MediaQuery.of(context).size.width / 15,
                 Provider.of<Playlist>(context, listen: false)
                     .playedSounds[index]
                     .img),
