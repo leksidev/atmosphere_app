@@ -1,7 +1,10 @@
 import 'package:atmosphere/features/sounds_screen/view/sounds_list.dart';
+import 'package:atmosphere/models/handlers/audio_handler.dart';
 import 'package:atmosphere/models/playlist.dart';
 import 'package:atmosphere/features/sounds_screen/view/player_panel.dart';
+import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 
 class SoundsScreen extends StatelessWidget {
@@ -22,39 +25,51 @@ class SoundsScreen extends StatelessWidget {
               child: Provider.of<Playlist>(context).playedSounds.isEmpty
                   ? const Text('')
                   : Card(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: StreamBuilder<PlaybackState>(
+                        stream: GetIt.I<MyAudioHandler>().playbackState,
+                        builder: (context, snapshot) {
+                          final playing = snapshot.data?.playing ?? false;
+                          // final processingState =
+                          //     snapshot.data?.processingState ??
+                          //         AudioProcessingState.idle;
+                          return SingleChildScrollView(
+                            child: Column(
                               children: [
-                                IconButton(
-                                  icon: const Icon(Icons.play_arrow),
-                                  onPressed: () {
-                                    context.read<Playlist>().resumePlaylist();
-                                  },
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    if (playing)
+                                      IconButton(
+                                        icon: const Icon(Icons.pause),
+                                        onPressed: () {
+                                          GetIt.I<MyAudioHandler>().pause();
+                                        },
+                                      )
+                                    else
+                                      IconButton(
+                                        icon: const Icon(Icons.play_arrow),
+                                        onPressed: () {
+                                          GetIt.I<MyAudioHandler>().play();
+                                        },
+                                      ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: const Row(
+                                        children: [
+                                          Icon(Icons.save_alt),
+                                          Text('save as...'),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                IconButton(
-                                  icon: const Icon(Icons.pause),
-                                  onPressed: () {
-                                    context.read<Playlist>().pausePlaylist();
-                                  },
-                                ),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: const Row(
-                                    children: [
-                                      Icon(Icons.save_alt),
-                                      Text('save as...'),
-                                    ],
-                                  ),
-                                ),
+                                const PlayerPanel(),
                               ],
                             ),
-                            const PlayerPanel(),
-                          ],
-                        ),
+                          );
+                        },
                       ),
                     ),
             ),

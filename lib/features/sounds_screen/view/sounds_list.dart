@@ -17,7 +17,8 @@ class SoundsList extends StatelessWidget {
           childAspectRatio: 1 / 1,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10),
-      itemCount: Provider.of<Playlist>(context).mutedSounds.length,
+      itemCount:
+          Provider.of<Playlist>(context, listen: false).mutedSounds.length,
       itemBuilder: (BuildContext context, index) {
         return GestureDetector(
           onTap: () {

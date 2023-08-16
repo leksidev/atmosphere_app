@@ -1,5 +1,6 @@
 import 'package:atmosphere/config/routes/routes.dart';
 import 'package:atmosphere/firebase_options.dart';
+import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -8,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+import 'models/handlers/audio_handler.dart';
 import 'models/playlist.dart';
 
 Future<void> main() async {
@@ -23,8 +25,25 @@ Future<void> main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+
   final talker = TalkerFlutter.init();
   GetIt.I.registerSingleton(talker);
+
+  final player = Playlist();
+
+  GetIt.I.registerSingleton(player);
+
+  final audioHandler = await AudioService.init(
+    builder: () => MyAudioHandler(),
+    config: const AudioServiceConfig(
+      androidNotificationChannelId: 'com.example.atmosphere.channel.audio',
+      androidNotificationChannelName: 'Atmosphere',
+      androidShowNotificationBadge: true,
+      notificationColor: Colors.blueGrey,
+    ),
+  );
+
+  GetIt.I.registerSingleton(audioHandler);
 
   runApp(const AtmosphereApp());
 }
@@ -37,7 +56,7 @@ class AtmosphereApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Playlist>(
-          create: (_) => Playlist(),
+          create: (_) => GetIt.I<Playlist>(),
         ),
       ],
       child: MaterialApp.router(

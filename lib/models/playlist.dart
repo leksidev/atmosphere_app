@@ -1,6 +1,8 @@
 import 'package:atmosphere/data/sound_repository.dart';
+import 'package:atmosphere/models/handlers/audio_handler.dart';
 import 'package:atmosphere/widgets/sound_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'sound_item.dart';
 
 class Playlist extends ChangeNotifier {
@@ -9,6 +11,7 @@ class Playlist extends ChangeNotifier {
   List<SoundItem> playedSounds = [];
 
   void addToPlaylist(SoundItem sound) {
+    GetIt.I<MyAudioHandler>().play();
     if (sound.isActive == true) {
       playedSounds.add(sound);
       sound.played = true;
@@ -24,21 +27,9 @@ class Playlist extends ChangeNotifier {
     notifyListeners();
   }
 
-  void pausePlaylist() {
-    for (SoundItem sound in playedSounds) {
-      sound.pauseSound();
-    }
-  }
-
   void changeVolume(SoundItem sound, double volume) {
     sound.setVolume(volume);
     notifyListeners();
-  }
-
-  void resumePlaylist() {
-    for (SoundItem sound in playedSounds) {
-      sound.playSound();
-    }
   }
 
   List<Widget> get mutedSoundsButtons {
@@ -54,12 +45,12 @@ class Playlist extends ChangeNotifier {
 
   List<Widget> get playedSoundsButtons {
     List<SoundItem> soundsList = playedSounds;
-    final wiggetsList = <Widget>[];
+    final widgetsList = <Widget>[];
     for (SoundItem sound in soundsList) {
-      wiggetsList.add(
+      widgetsList.add(
         SoundButton(sound: sound),
       );
     }
-    return wiggetsList;
+    return widgetsList;
   }
 }
