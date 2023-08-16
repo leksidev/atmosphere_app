@@ -29,7 +29,15 @@ class SoundsList extends StatelessWidget {
             Provider.of<Playlist>(context, listen: false)
                 .addToPlaylist(currentSound);
 
-            if (currentSound.isActive == false) {
+            if (currentSound.isActive) {
+              Provider.of<Playlist>(context, listen: false)
+                  .mutedSounds[index]
+                  .pauseSound();
+              Provider.of<Playlist>(context, listen: false).deleteFromPlaylist(
+                  Provider.of<Playlist>(context, listen: false)
+                      .playedSounds[index]);
+            }
+            if (!currentSound.isActive) {
               Provider.of<Playlist>(context, listen: false)
                   .playedSounds[Provider.of<Playlist>(context, listen: false)
                       .playedSounds
@@ -37,13 +45,12 @@ class SoundsList extends StatelessWidget {
                   .playSound();
             }
 
-            if (currentSound.isActive) {
-              Provider.of<Playlist>(context, listen: false)
-                  .mutedSounds[Provider.of<Playlist>(context, listen: false)
-                      .mutedSounds
-                      .indexOf(currentSound)]
-                  .pauseSound();
-            }
+            // Provider.of<Playlist>(context, listen: false)
+            //     .playedSounds[index]
+            //     .pauseSound();
+            // Provider.of<Playlist>(context, listen: false).deleteFromPlaylist(
+            //     Provider.of<Playlist>(context, listen: false)
+            //         .playedSounds[index]);
           },
           child: SoundButton(
               sound: Provider.of<Playlist>(context).mutedSounds[index]),

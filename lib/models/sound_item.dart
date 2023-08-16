@@ -28,7 +28,7 @@ class SoundItem {
     //   url,
     // );
     // player.loopMode;
-    // player.setLoopMode(LoopMode.one);
+    player.setLoopMode(LoopMode.one);
     player.play();
   }
 

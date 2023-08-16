@@ -11,8 +11,8 @@ class Playlist extends ChangeNotifier {
   List<SoundItem> playedSounds = [];
 
   void addToPlaylist(SoundItem sound) {
-    GetIt.I<MyAudioHandler>().play();
     if (sound.isActive == true) {
+      GetIt.I<MyAudioHandler>().play();
       playedSounds.add(sound);
       sound.played = true;
       notifyListeners();
