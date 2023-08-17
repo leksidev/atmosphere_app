@@ -1,5 +1,5 @@
 import 'package:atmosphere/features/sounds_screen/view/sounds_list.dart';
-import 'package:atmosphere/models/handlers/audio_handler.dart';
+import 'package:atmosphere/handlers/audio_handler.dart';
 import 'package:atmosphere/models/playlist.dart';
 import 'package:atmosphere/features/sounds_screen/view/player_panel.dart';
 import 'package:audio_service/audio_service.dart';

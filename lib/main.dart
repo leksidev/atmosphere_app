@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-import 'models/handlers/audio_handler.dart';
+import 'handlers/audio_handler.dart';
 import 'models/playlist.dart';
 
 import 'config/themes/color_schemes.g.dart';

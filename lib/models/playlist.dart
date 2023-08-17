@@ -1,6 +1,6 @@
 import 'package:atmosphere/data/sound_repository.dart';
 import 'package:atmosphere/features/sounds_screen/view/widgets/sound_button.dart';
-import 'package:atmosphere/models/handlers/audio_handler.dart';
+import 'package:atmosphere/handlers/audio_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'sound_item.dart';
