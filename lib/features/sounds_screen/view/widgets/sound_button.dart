@@ -9,11 +9,8 @@ class SoundButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: CircleAvatar(
-        child: SoundImage(sound: sound),
-      ),
+    return CircleAvatar(
+      child: SoundImage(sound: sound),
     );
   }
 }

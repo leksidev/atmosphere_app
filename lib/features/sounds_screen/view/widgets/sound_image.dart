@@ -11,10 +11,13 @@ class SoundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      sound.img,
-      color: sound.isActive ? null : const Color.fromARGB(177, 15, 19, 51),
-      colorBlendMode: BlendMode.modulate,
+    return ClipRect(
+      child: Image.asset(
+        sound.img,
+        scale: 1.5,
+        color: sound.isActive ? null : const Color.fromARGB(177, 15, 19, 51),
+        colorBlendMode: BlendMode.modulate,
+      ),
     );
   }
 }

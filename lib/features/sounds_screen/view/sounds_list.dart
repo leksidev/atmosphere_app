@@ -18,10 +18,7 @@ class SoundsList extends StatelessWidget {
 
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 160,
-          childAspectRatio: 1 / 1,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10),
+          maxCrossAxisExtent: 100, crossAxisSpacing: 20, mainAxisSpacing: 20),
       itemCount: soundsItemCounter,
       itemBuilder: (BuildContext context, index) {
         return GestureDetector(

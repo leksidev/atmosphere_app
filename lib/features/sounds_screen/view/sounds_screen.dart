@@ -12,70 +12,68 @@ class SoundsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Expanded(flex: 2, child: SoundsList()),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Provider.of<Playlist>(context).playedSounds.isEmpty
-                  ? const Text('')
-                  : Card(
-                      child: StreamBuilder<PlaybackState>(
-                        stream: GetIt.I<MyAudioHandler>().playbackState,
-                        builder: (context, snapshot) {
-                          final playing = snapshot.data?.playing ?? false;
-                          // final processingState =
-                          //     snapshot.data?.processingState ??
-                          //         AudioProcessingState.idle;
-                          return SingleChildScrollView(
-                            child: Column(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: SoundsList(),
+        ),
+        Expanded(
+          flex: 1,
+          child: Provider.of<Playlist>(context).playedSounds.isEmpty
+              ? Text(
+                  'Нажмите на картинку звука, чтобы добавить его в свою атмосферу',
+                  style: Theme.of(context).textTheme.bodyLarge!,
+                )
+              : Card(
+                  child: StreamBuilder<PlaybackState>(
+                    stream: GetIt.I<MyAudioHandler>().playbackState,
+                    builder: (context, snapshot) {
+                      final playing = snapshot.data?.playing ?? false;
+                      // final processingState =
+                      //     snapshot.data?.processingState ??
+                      //         AudioProcessingState.idle;
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    if (playing)
-                                      IconButton(
+                                playing
+                                    ? IconButton(
                                         icon: const Icon(Icons.pause),
                                         onPressed: () {
                                           GetIt.I<MyAudioHandler>().pause();
                                         },
                                       )
-                                    else
-                                      IconButton(
+                                    : IconButton(
                                         icon: const Icon(Icons.play_arrow),
                                         onPressed: () {
                                           GetIt.I<MyAudioHandler>().play();
                                         },
                                       ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: const Row(
-                                        children: [
-                                          Icon(Icons.save_alt),
-                                          Text('save as...'),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: const Row(
+                                    children: [
+                                      Icon(Icons.save_alt),
+                                      Text('save as...'),
+                                    ],
+                                  ),
                                 ),
-                                const PlayerPanel(),
                               ],
                             ),
-                          );
-                        },
-                      ),
-                    ),
-            ),
-          ),
-        ],
-      ),
+                            const PlayerPanel(),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+        ),
+      ],
     );
   }
 }

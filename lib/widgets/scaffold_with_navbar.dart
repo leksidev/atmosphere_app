@@ -12,11 +12,19 @@ class ScaffoldWithNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        clipBehavior: Clip.antiAlias,
+        excludeHeaderSemantics: true,
+        centerTitle: true,
+        forceMaterialTransparency: true,
         actions: const [ThemesChangeIconButton()],
-        title: const Text("СВОЯ АТМОСФЕРА"),
+        title: const Text(
+          "СВОЯ АТМОСФЕРА",
+        ),
+        titleTextStyle: Theme.of(context).textTheme.headlineMedium,
+        toolbarHeight: 100,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: child,
       ),
       bottomNavigationBar: NavigationBar(
