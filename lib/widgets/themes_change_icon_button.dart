@@ -10,9 +10,9 @@ class ThemesChangeIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        icon: Icon(context.read<ThemeModel>().isDark
-            ? Icons.nightlight_round
-            : Icons.wb_sunny),
+        icon: Icon(context.watch<ThemeModel>().isDark
+            ? Icons.wb_sunny
+            : Icons.nightlight_round),
         onPressed: () {
           context.read<ThemeModel>().isDark
               ? context.read<ThemeModel>().isDark = false
