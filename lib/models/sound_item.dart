@@ -16,18 +16,9 @@ class SoundItem {
     await player.setAudioSource(
       AudioSource.asset(
         url,
-        tag: MediaItem(
-          // Specify a unique ID for each media item:
-          id: url,
-          // Metadata to display in the notification:
-          title: title,
-        ),
+        tag: MediaItem(id: title, title: title, displayTitle: "своя атмосфера"),
       ),
     );
-    // await player.setAsset(
-    //   url,
-    // );
-    // player.loopMode;
     player.setLoopMode(LoopMode.one);
     player.play();
   }

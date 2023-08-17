@@ -1,6 +1,6 @@
+import 'package:atmosphere/features/sounds_screen/view/widgets/sound_button.dart';
 import 'package:atmosphere/models/playlist.dart';
 import 'package:atmosphere/models/sound_item.dart';
-import 'package:atmosphere/widgets/sound_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,46 +11,32 @@ class SoundsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int soundsItemCounter =
+        Provider.of<Playlist>(context, listen: false).mutedSounds.length;
+
+    final Playlist player = Provider.of<Playlist>(context, listen: false);
+
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 160,
           childAspectRatio: 1 / 1,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10),
-      itemCount:
-          Provider.of<Playlist>(context, listen: false).mutedSounds.length,
+      itemCount: soundsItemCounter,
       itemBuilder: (BuildContext context, index) {
         return GestureDetector(
           onTap: () {
-            SoundItem currentSound =
-                Provider.of<Playlist>(context, listen: false)
-                    .mutedSounds[index];
+            SoundItem currentSound = player.mutedSounds[index];
 
-            Provider.of<Playlist>(context, listen: false)
-                .addToPlaylist(currentSound);
+            player.addToPlaylist(currentSound);
 
             if (currentSound.isActive) {
-              Provider.of<Playlist>(context, listen: false)
-                  .mutedSounds[index]
-                  .pauseSound();
-              Provider.of<Playlist>(context, listen: false).deleteFromPlaylist(
-                  Provider.of<Playlist>(context, listen: false)
-                      .playedSounds[index]);
+              player.mutedSounds[index].pauseSound();
             }
             if (!currentSound.isActive) {
-              Provider.of<Playlist>(context, listen: false)
-                  .playedSounds[Provider.of<Playlist>(context, listen: false)
-                      .playedSounds
-                      .indexOf(currentSound)]
+              player.playedSounds[player.playedSounds.indexOf(currentSound)]
                   .playSound();
             }
-
-            // Provider.of<Playlist>(context, listen: false)
-            //     .playedSounds[index]
-            //     .pauseSound();
-            // Provider.of<Playlist>(context, listen: false).deleteFromPlaylist(
-            //     Provider.of<Playlist>(context, listen: false)
-            //         .playedSounds[index]);
           },
           child: SoundButton(
               sound: Provider.of<Playlist>(context).mutedSounds[index]),

@@ -32,8 +32,22 @@ final router = GoRouter(
               key: state.pageKey,
               child: const SoundsScreen(),
               transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) =>
-                      FadeTransition(opacity: animation, child: child),
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(-1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset.zero,
+                      end: const Offset(-1.0, 0.0),
+                    ).animate(secondaryAnimation),
+                    child: child,
+                  ),
+                );
+              },
+              // FadeTransition(opacity: animation, child: child),
             ),
             // builder: (context, state) {
             //   return const SoundsScreen();
@@ -45,11 +59,35 @@ final router = GoRouter(
               key: state.pageKey,
               child: const PressetsScreen(),
               transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) =>
-                      FadeTransition(opacity: animation, child: child),
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(-1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset.zero,
+                      end: const Offset(-1.0, 0.0),
+                    ).animate(secondaryAnimation),
+                    child: child,
+                  ),
+                );
+              },
+              // FadeTransition(opacity: animation, child: child),
             ),
-            // builder: (context, state) => const PressetsScreen(),
           ),
+          // GoRoute(
+          //   path: '/pressets',
+          //   pageBuilder: (context, state) => CustomTransitionPage<void>(
+          //     key: state.pageKey,
+          //     child: const PressetsScreen(),
+          //     transitionsBuilder:
+          //         (context, animation, secondaryAnimation, child) =>
+          //             FadeTransition(opacity: animation, child: child),
+          //   ),
+          //   // builder: (context, state) => const PressetsScreen(),
+          // ),
         ]),
   ],
 );

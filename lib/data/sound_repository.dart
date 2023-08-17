@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:atmosphere/features/sounds_screen/view/widgets/sound_button.dart';
 import 'package:atmosphere/models/sound_item.dart';
-import 'package:atmosphere/widgets/sound_button.dart';
 import 'package:flutter/material.dart';
 
 const content = '''
@@ -103,7 +103,6 @@ class SoundRepository {
             img: sound[0]['image']),
       );
     }
-
     return soundsData;
   }
 

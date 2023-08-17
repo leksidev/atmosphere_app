@@ -1,3 +1,4 @@
+import 'package:atmosphere/widgets/themes_change_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
@@ -10,14 +11,19 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: const [ThemesChangeIconButton()],
+        title: const Text("СВОЯ АТМОСФЕРА"),
+      ),
       body: child,
       bottomNavigationBar: NavigationBar(
-        animationDuration: const Duration(microseconds: 500),
+        animationDuration: const Duration(microseconds: 700),
         destinations: const [
           NavigationDestination(icon: Icon(LineIcons.music), label: 'Sounds'),
           NavigationDestination(
               icon: Icon(LineIcons.audioFile), label: 'Pressets'),
-          NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
+          NavigationDestination(
+              icon: Icon(LineIcons.infoCircle), label: 'Info'),
         ],
         selectedIndex: _calculateSelectedIndex(context),
         onDestinationSelected: (int idx) => _onItemTapped(idx, context),

@@ -1,5 +1,6 @@
 import 'package:atmosphere/config/routes/routes.dart';
 import 'package:atmosphere/firebase_options.dart';
+import 'package:atmosphere/models/theme_model.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -11,6 +12,8 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 import 'models/handlers/audio_handler.dart';
 import 'models/playlist.dart';
+
+import 'config/themes/color_schemes.g.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,13 +61,26 @@ class AtmosphereApp extends StatelessWidget {
         ChangeNotifierProvider<Playlist>(
           create: (_) => GetIt.I<Playlist>(),
         ),
-      ],
-      child: MaterialApp.router(
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          useMaterial3: true,
+        ChangeNotifierProvider(
+          create: (_) => ThemeModel(),
         ),
-        routerConfig: router,
+      ],
+      child: Consumer(
+        builder: (context, ThemeModel themeNotifier, child) {
+          return MaterialApp.router(
+            theme: context.watch<ThemeModel>().isDark
+                ? ThemeData(
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    useMaterial3: true,
+                    colorScheme: darkColorScheme)
+                : ThemeData(
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    useMaterial3: true,
+                    colorScheme: lightColorScheme),
+            // debugShowCheckedModeBanner: false,
+            routerConfig: router,
+          );
+        },
       ),
     );
   }

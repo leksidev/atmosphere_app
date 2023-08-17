@@ -1,6 +1,6 @@
 import 'package:atmosphere/data/sound_repository.dart';
+import 'package:atmosphere/features/sounds_screen/view/widgets/sound_button.dart';
 import 'package:atmosphere/models/handlers/audio_handler.dart';
-import 'package:atmosphere/widgets/sound_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'sound_item.dart';
@@ -12,9 +12,9 @@ class Playlist extends ChangeNotifier {
 
   void addToPlaylist(SoundItem sound) {
     if (sound.isActive == true) {
-      GetIt.I<MyAudioHandler>().play();
       playedSounds.add(sound);
       sound.played = true;
+      GetIt.I<MyAudioHandler>().play();
       notifyListeners();
     } else {
       deleteFromPlaylist(sound);
