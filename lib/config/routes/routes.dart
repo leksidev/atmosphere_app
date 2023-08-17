@@ -1,3 +1,4 @@
+import 'package:atmosphere/features/info/view/info_screen.dart';
 import 'package:atmosphere/features/sounds_screen/view/sounds_screen.dart';
 import 'package:atmosphere/features/pressets/view/pressets_screen.dart';
 import 'package:atmosphere/widgets/scaffold_with_navbar.dart';
@@ -58,6 +59,30 @@ final router = GoRouter(
             pageBuilder: (context, state) => CustomTransitionPage<void>(
               key: state.pageKey,
               child: const PressetsScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(-1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(animation),
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset.zero,
+                      end: const Offset(-1.0, 0.0),
+                    ).animate(secondaryAnimation),
+                    child: child,
+                  ),
+                );
+              },
+              // FadeTransition(opacity: animation, child: child),
+            ),
+          ),
+          GoRoute(
+            path: '/info',
+            pageBuilder: (context, state) => CustomTransitionPage<void>(
+              key: state.pageKey,
+              child: const InfoScreen(),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 return SlideTransition(

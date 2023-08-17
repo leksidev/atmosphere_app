@@ -15,7 +15,10 @@ class ScaffoldWithNavBar extends StatelessWidget {
         actions: const [ThemesChangeIconButton()],
         title: const Text("СВОЯ АТМОСФЕРА"),
       ),
-      body: child,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 1.0),
+        child: child,
+      ),
       bottomNavigationBar: NavigationBar(
         animationDuration: const Duration(microseconds: 700),
         destinations: const [
@@ -39,6 +42,9 @@ class ScaffoldWithNavBar extends StatelessWidget {
     if (location.startsWith('/pressets')) {
       return 1;
     }
+    if (location.startsWith('/info')) {
+      return 2;
+    }
     return 0;
   }
 
@@ -49,6 +55,9 @@ class ScaffoldWithNavBar extends StatelessWidget {
         break;
       case 1:
         GoRouter.of(context).go('/pressets');
+        break;
+      case 2:
+        GoRouter.of(context).go('/info');
         break;
     }
   }
