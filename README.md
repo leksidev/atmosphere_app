@@ -1,5 +1,5 @@
 # ATMOSPHERE
-## Create your own atmosphere with headphones
+## Create your own sound ambience with headphones
 
 App generate customisible background sounds for work, meditation, reading. 
 
