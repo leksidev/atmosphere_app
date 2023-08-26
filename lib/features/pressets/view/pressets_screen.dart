@@ -5,6 +5,8 @@ class PressetsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Pressets list');
+    return const Text(
+        '''В следующей версии приложения появится возможность сохранять собственные конфигурации фоновых звуков.
+Плейлисты будут отображаться на этом экране.''');
   }
 }
