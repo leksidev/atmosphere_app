@@ -9,7 +9,14 @@ class InfoScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // const FlutterLogo(),
+        Center(
+          child: Image.asset(
+            'assets/img/icons8-meditation.png',
+          ),
+        ),
+        const SizedBox(
+          height: 15,
+        ),
         Text(
             "АТМОСФЕРА — приложение для создания комбинаций из фоновых звуков для расслабления, медитайций, работы, учебы, сна.",
             style: Theme.of(context).textTheme.bodyLarge),
