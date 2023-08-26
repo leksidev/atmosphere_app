@@ -10,13 +10,13 @@ const content = '''
         {
             "title": "Storm"
         ,
-        
+
             "link": "assets/audio/data_resources_sounds_storm.ogg"
         ,
-        
+
             "icon": "WeatherIcons.storm_showers"
         ,
-        
+
             "image": "assets/img/icons8-thunderstorm.png"
         }
     ],
@@ -104,16 +104,6 @@ const content = '''
         }
     ],[
         {
-            "title": "evening-forest"
-        ,
-            "link": "assets/audio/data_resources_sounds_evening-forest.ogg"
-        ,
-            "icon": "WeatherIcons.storm_showers"
-        ,
-            "image": "assets/img/icons8-evening-forest.png"
-        }
-    ],[
-        {
             "title": "farm"
         ,
             "link": "assets/audio/data_resources_sounds_farm.ogg"
@@ -154,7 +144,7 @@ const content = '''
         }
     ]
 ]
- 
+
 ''';
 
 class SoundRepository {
